@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter } from "./config/fonts";
+import { inter } from "@/config/fonts";
 import "./globals.css";
 
 
