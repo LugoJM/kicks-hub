@@ -15,10 +15,12 @@ type ValidSizes = "5"|"5.5"|"6"|"6.5"|"7"|"7.5"|"8"|"8.5"|"9"|"9.5"|"10"|"10.5"|
 type ValidTypes = "sneakers" | "slides" | "shirts" | "jacket";
 
 interface SeedData {
-    products: SeedProduct[],
+  categories : ValidTypes[];
+  products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
+  categories: ["sneakers", "slides", "shirts", "jacket"],
   products: [
     {
       description:
