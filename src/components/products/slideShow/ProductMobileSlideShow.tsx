@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-import "./slideshow.css";
+import "./slideShow.css";
 
 interface Props {
   images: string[];
