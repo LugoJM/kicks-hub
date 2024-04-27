@@ -7,5 +7,6 @@ export { ProductSlideshow } from "./products/slideShow/ProductSlideShow";
 export { QuantitySelector } from "./products/quantity-selector/QuantitySelector";
 export { SideMenu } from "./ui/sidemenu/SideMenu";
 export { SizeSelector } from "./products/size-selector/SizeSelector";
+export { StockLabel } from "./products/stock-label/StockLabel";
 export { Title } from "./ui/title/Title";
 export { TopBar } from "./ui/top-bar/TopBar";
