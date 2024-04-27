@@ -4,7 +4,10 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  title: "Kicks Hub",
+  title: {
+    template : "%s - Kicks Hub",
+    default : "Home - Kicks Hub"
+  },
   description: "A virtual shoe selling store.",
 };
 
