@@ -3,7 +3,7 @@ export const revalidate = 60;
 import { getPaginatedProductWithImages } from "@/actions";
 import { Pagination, ProductsGrid, Title } from "@/components";
 import { Gender } from "@prisma/client";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 
 interface Props {
@@ -23,7 +23,7 @@ export default async function CategoryPage( {params, searchParams} : Props) {
 
   const { products, totalPages } = await getPaginatedProductWithImages({page, gender : gender as Gender});
 
-  if(products.length === 0) redirect(`/gender/${gender}`);
+  if(products.length === 0) notFound();
 
   const label : Record<string, string> = {
     men: "Mans",
