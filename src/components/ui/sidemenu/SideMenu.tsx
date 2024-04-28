@@ -1,18 +1,28 @@
-'use client';
+"use client";
 
-import clsx from 'clsx'
+import clsx from "clsx"
+import { useSession } from "next-auth/react";
 import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
 import { SideMenuLink } from "./SideMenuLink";
 import { useUIStore } from "@/store";
+import { logOut } from "@/actions";
 
 
 export const SideMenu = () => {
   const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
   const closeSideMenu = useUIStore(state => state.closeSideMenu);
 
+  const { data : session } = useSession();
+  const isAuthenticated = !!session?.user;
+  const isUserAdmin = (session?.user.role === "admin");
+
+  const logOutEvent = async () => {
+    await logOut();
+    window.location.reload();
+  }
+
   return (
     <div >
-
         {
             isSideMenuOpen && (
                 <>
@@ -45,17 +55,32 @@ export const SideMenu = () => {
                     className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-500" />
             </div>
 
-            <SideMenuLink href="/" icon={<IoPersonOutline size={30}/>} title="Profile"/>
-            <SideMenuLink href="/orders" icon={<IoTicketOutline size={30}/>} title="Orders"/>
-            <SideMenuLink href="/auth/login" icon={<IoLogInOutline size={30}/>} title="Sign In"/>
-            <SideMenuLink href="/auth/login" icon={<IoLogOutOutline size={30}/>} title="Log Out"/>
+            
+            {!isAuthenticated && (
+                <SideMenuLink href="/auth/login" icon={<IoLogInOutline size={30}/>} title="Sign In" onClick={closeSideMenu}/>
+            )}
 
-            <div className="w-full h-px bg-gray-200 my-10"/>
+            {isAuthenticated && (
+                <>
+                    <SideMenuLink href="/profile" icon={<IoPersonOutline size={30}/>} title="Profile" onClick={closeSideMenu}/>
+                    <SideMenuLink href="/orders" icon={<IoTicketOutline size={30}/>} title="Orders"/>
+                    <button onClick={logOutEvent} className="flex w-full items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
+                        <IoLogOutOutline size={30}/>
+                        <span className="ml-3 text-xl">Log Out</span>
+                    </button>
+                </>
+            )}
 
-            <SideMenuLink href="/admin/products" icon={<IoShirtOutline size={30}/>} title="Products"/>
-            <SideMenuLink href="/admin/orders" icon={<IoTicketOutline size={30}/>} title="Orders"/>
-            <SideMenuLink href="/admin/users" icon={<IoPeopleOutline size={30}/>} title="Users"/>
-
+            {
+                isUserAdmin && (
+                    <>
+                        <div className="w-full h-px bg-gray-200 my-10"/>
+                        <SideMenuLink href="/admin/products" icon={<IoShirtOutline size={30}/>} title="Products"/>
+                        <SideMenuLink href="/admin/orders" icon={<IoTicketOutline size={30}/>} title="Orders"/>
+                        <SideMenuLink href="/admin/users" icon={<IoPeopleOutline size={30}/>} title="Users"/>
+                    </>
+                )
+            }
 
         </nav>
     </div>
