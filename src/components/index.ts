@@ -4,6 +4,7 @@ export { Pagination } from "./ui/pagination/Pagination";
 export { ProductMobileSlideshow } from "./products/slideShow/ProductMobileSlideShow";
 export { ProductsGrid } from "./products/products-grid/ProductsGrid";
 export { ProductSlideshow } from "./products/slideShow/ProductSlideShow";
+export { Provider } from "./provider/Provider";
 export { QuantitySelector } from "./products/quantity-selector/QuantitySelector";
 export { SideMenu } from "./ui/sidemenu/SideMenu";
 export { SizeSelector } from "./products/size-selector/SizeSelector";
