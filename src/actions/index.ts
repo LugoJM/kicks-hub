@@ -9,6 +9,8 @@ export { getStoredUserAddress } from "./address/get-user-address";
 export { getUserOrders } from "./order/get-orders-by-user";
 export { login } from "./auth/login";
 export { logOut } from "./auth/logout";
+export { paypalCheckPayment } from "./payments/paypal-check-payment";
 export { placeOrder } from "./order/place-order";
 export { registerUser } from "./auth/register";
+export { setTransactionId } from "./payments/set-transaction-id";
 export { setUserAddress } from "./address/set-user-address";
