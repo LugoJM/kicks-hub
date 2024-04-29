@@ -63,7 +63,7 @@ export const SideMenu = () => {
             {isAuthenticated && (
                 <>
                     <SideMenuLink href="/profile" icon={<IoPersonOutline size={30}/>} title="Profile" onClick={closeSideMenu}/>
-                    <SideMenuLink href="/orders" icon={<IoTicketOutline size={30}/>} title="Orders"/>
+                    <SideMenuLink href="/orders" icon={<IoTicketOutline size={30}/>} title="Orders" onClick={closeSideMenu}/>
                     <button onClick={logOutEvent} className="flex w-full items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
                         <IoLogOutOutline size={30}/>
                         <span className="ml-3 text-xl">Log Out</span>
@@ -76,7 +76,7 @@ export const SideMenu = () => {
                     <>
                         <div className="w-full h-px bg-gray-200 my-10"/>
                         <SideMenuLink href="/admin/products" icon={<IoShirtOutline size={30}/>} title="Products"/>
-                        <SideMenuLink href="/admin/orders" icon={<IoTicketOutline size={30}/>} title="Orders"/>
+                        <SideMenuLink href="/admin/orders" icon={<IoTicketOutline size={30}/>} title="Orders" onClick={closeSideMenu}/>
                         <SideMenuLink href="/admin/users" icon={<IoPeopleOutline size={30}/>} title="Users"/>
                     </>
                 )
