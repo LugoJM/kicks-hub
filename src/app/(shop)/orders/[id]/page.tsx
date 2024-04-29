@@ -1,23 +1,28 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { PaymentStatus, SummaryDetails, Title } from "@/components";
+import {
+  PayPalButton,
+  PaymentStatus,
+  SummaryDetails,
+  Title,
+} from "@/components";
 import { getOrderDetails } from "@/actions";
 import { currencyFormat } from "@/utils";
 
 interface Props {
-  params : {
-    id : string;
-  }
+  params: {
+    id: string;
+  };
 }
-  
-export default async function OrderPage( {params} : Props) {
+
+export default async function OrderPage({ params }: Props) {
   const { id } = params;
 
-  const displayId = id.split("-").at(-1)
+  const displayId = id.split("-").at(-1);
 
   const { ok, order } = await getOrderDetails(id);
 
-  if(!ok) redirect("/");
+  if (!ok) redirect("/");
 
   const address = order!.orderAddress;
 
@@ -31,7 +36,10 @@ export default async function OrderPage( {params} : Props) {
 
             {/* Items */}
             {order!.orderItems.map((item) => (
-              <div key={`${item.product.slug} - ${item.size}`} className="flex mb-5">
+              <div
+                key={`${item.product.slug} - ${item.size}`}
+                className="flex mb-5"
+              >
                 <Image
                   src={`/products/${item.product.ProductImage[0].url}`}
                   width={100}
@@ -48,7 +56,9 @@ export default async function OrderPage( {params} : Props) {
                   <span>{item.product.title}</span>
                   <p className="text-sm my-1">Size: {item.size}</p>
                   <p className="text-sm my-1">Quantity: {item.quantity}</p>
-                  <p className="font-bold">{currencyFormat(item.price * item.quantity)}</p>
+                  <p className="font-bold">
+                    {currencyFormat(item.price * item.quantity)}
+                  </p>
                 </div>
               </div>
             ))}
@@ -73,10 +83,19 @@ export default async function OrderPage( {params} : Props) {
             <div className="w-full h-0.5 rounded bg-gray-200 mb-10" />
 
             <h2 className="text-2xl mb-2">Order Summary</h2>
-            <SummaryDetails items={order!.itemsInOrder} subTotal={order!.subTotal} total={order!.total} tax={order!.tax} />
-            
+            <SummaryDetails
+              items={order!.itemsInOrder}
+              subTotal={order!.subTotal}
+              total={order!.total}
+              tax={order!.tax}
+            />
+
             <div className="mt-5 mb-2 w-full">
-              <PaymentStatus isPayed={order!.isPaid} />
+              {order!.isPaid ? (
+                <PaymentStatus isPayed={order!.isPaid} />
+              ) : (
+                <PayPalButton orderId={order!.id} amount={order!.total} />
+              )}
             </div>
           </div>
         </div>
