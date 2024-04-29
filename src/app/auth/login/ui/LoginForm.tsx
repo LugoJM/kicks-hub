@@ -13,7 +13,6 @@ interface Props{
 
 export const LoginForm = ( { callbackUrl } : Props) => {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
-  console.log({callbackUrl})
 
   useEffect(() => {
     if(errorMessage === "Success"){

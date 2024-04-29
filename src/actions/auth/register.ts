@@ -29,7 +29,6 @@ export const registerUser = async (
     };
 
   } catch (error) {
-    console.log(error);
     return {
       ok: false,
       message: "Internal Server Error While Creating User",
