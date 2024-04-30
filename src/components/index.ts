@@ -3,6 +3,7 @@ export { PageNotFound } from "./ui/not-found/PageNotFound";
 export { Pagination } from "./ui/pagination/Pagination";
 export { PaymentStatus } from "./ui/checkout/PaymentStatus";
 export { PayPalButton } from "./ui/paypal/PayPalButton";
+export { ProductImage } from "./products/product-image/ProductImage";
 export { ProductMobileSlideshow } from "./products/slideShow/ProductMobileSlideShow";
 export { ProductsGrid } from "./products/products-grid/ProductsGrid";
 export { ProductSlideshow } from "./products/slideShow/ProductSlideShow";
