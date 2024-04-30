@@ -36,7 +36,7 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
       intent: "CAPTURE",
       purchase_units: [
         {
-         invoice_id : orderId,
+          invoice_id: orderId,
           amount: {
             value: roundedAmount,
             currency_code: "USD",
@@ -53,15 +53,16 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
     return transactionId;
   };
 
-  const onApproved = async (
-    data: OnApproveData,
-    actions: OnApproveActions
-  ) => {
+  const onApproved = async (data: OnApproveData, actions: OnApproveActions) => {
     const details = await actions.order?.capture();
-    if(!details) return;
+    if (!details) return;
 
     await paypalCheckPayment(details?.id ?? "");
   };
 
-  return <PayPalButtons createOrder={createOrder} onApprove={onApproved} />;
+  return (
+    <div className="relative z-0">
+      <PayPalButtons createOrder={createOrder} onApprove={onApproved} />
+    </div>
+  );
 };

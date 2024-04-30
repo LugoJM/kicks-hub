@@ -26,8 +26,8 @@ export const SideMenu = () => {
         {
             isSideMenuOpen && (
                 <>
-                    <div className="fixed top-0 left-0 w-screen h-screen z-[200] bg-black opacity-30"/>
-                    <div onClick={closeSideMenu} className="fade-in fixed top-0 left-0 w-screen z-[200] h-screen backdrop-filter backdrop-blur-sm"/>
+                    <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"/>
+                    <div onClick={closeSideMenu} className="fade-in fixed top-0 left-0 w-screen z-10 h-screen backdrop-filter backdrop-blur-sm"/>
                 </>
             )
         }
@@ -35,7 +35,7 @@ export const SideMenu = () => {
         <nav 
             className={
                 clsx(
-                    "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-[200] shadow-2xl transform transition-all duration-300",
+                    "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
                     {
                         "translate-x-full" : !isSideMenuOpen
                     }
@@ -75,9 +75,9 @@ export const SideMenu = () => {
                 isUserAdmin && (
                     <>
                         <div className="w-full h-px bg-gray-200 my-10"/>
-                        <SideMenuLink href="/admin/products" icon={<IoShirtOutline size={30}/>} title="Products"/>
+                        <SideMenuLink href="/admin/products" icon={<IoShirtOutline size={30}/>} title="Products" onClick={closeSideMenu}/>
                         <SideMenuLink href="/admin/orders" icon={<IoTicketOutline size={30}/>} title="Orders" onClick={closeSideMenu}/>
-                        <SideMenuLink href="/admin/users" icon={<IoPeopleOutline size={30}/>} title="Users"/>
+                        <SideMenuLink href="/admin/users" icon={<IoPeopleOutline size={30}/>} title="Users" onClick={closeSideMenu}/>
                     </>
                 )
             }
