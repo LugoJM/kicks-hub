@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/store";
 import { redirect } from "next/navigation";
 import { currencyFormat } from "@/utils";
+import { ProductImage } from "@/components";
 
 export const ProductsInCheckout = () => {
   const [loading, setLoading] = useState(false);
@@ -25,16 +25,12 @@ export const ProductsInCheckout = () => {
       {productsInCart.map((product) => (
         <div key={`${product.slug}-${product.size}`}>
           <div className="flex fade-in duration-300">
-            <Image
-              src={`/products/${product.image}`}
+            <ProductImage
+              src={product.image}
               width={100}
               height={100}
-              style={{
-                width: "100px",
-                height: "100px",
-              }}
               alt={product.title}
-              className="mr-5 rounded"
+              className="mr-5 rounded h-28 w-28"
             />
 
             <div>

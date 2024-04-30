@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { QuantitySelector } from "@/components";
+import { ProductImage, QuantitySelector } from "@/components";
 import { useCartStore } from "@/store";
 import { redirect } from "next/navigation";
 
@@ -28,16 +27,12 @@ export const ProductsInCart = () => {
       {productsInCart.map((product) => (
         <div key={`${product.slug}-${product.size}`}>
           <div className="flex fade-in duration-300">
-            <Image
-              src={`/products/${product.image}`}
+            <ProductImage
+              src={product.image}
               width={100}
               height={100}
-              style={{
-                width: "100px",
-                height: "100px",
-              }}
               alt={product.title}
-              className="mr-5 rounded"
+              className="mr-5 rounded w-28 h-28 object-fill"
             />
 
             <div>

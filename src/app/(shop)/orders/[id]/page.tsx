@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import {
   PayPalButton,
   PaymentStatus,
+  ProductImage,
   SummaryDetails,
   Title,
 } from "@/components";
@@ -40,16 +40,12 @@ export default async function OrderPage({ params }: Props) {
                 key={`${item.product.slug} - ${item.size}`}
                 className="flex mb-5"
               >
-                <Image
-                  src={`/products/${item.product.ProductImage[0].url}`}
+                <ProductImage
+                  src={item.product.ProductImage[0]?.url}
                   width={100}
                   height={100}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                  }}
-                  alt={item.product.ProductImage[0].url}
-                  className="mr-5 rounded"
+                  alt={item.product.ProductImage[0]?.url}
+                  className="mr-5 rounded w-28 h-28"
                 />
 
                 <div>

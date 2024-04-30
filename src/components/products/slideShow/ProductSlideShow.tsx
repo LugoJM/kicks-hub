@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Swiper as SwiperObject } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode, Navigation, Thumbs } from "swiper/modules";
-import Image from "next/legacy/image";
+import { ProductImage } from "../product-image/ProductImage";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -45,13 +45,13 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
       >
         {images.map((image) => (
           <SwiperSlide key={image}>
-            <Image
+            <ProductImage
               width={1024}
               height={800}
-              src={`/products/${image}`}
+              src={image}
               alt={title}
-              style={{objectFit:"cover"}}
-              className="rounded-lg"
+              className="rounded-lg w-full"
+              style={{objectFit:"fill"}}
             />
           </SwiperSlide>
         ))}
@@ -64,17 +64,17 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="mySwiper mt-2"
       >
         {images.map((image) => (
-          <SwiperSlide key={image}>
-            <Image
+          <SwiperSlide key={image} style={{width:300, height: 300}}>
+            <ProductImage
               width={300}
               height={300}
-              src={`/products/${image}`}
+              src={image}
               alt={title}
-              objectFit="cover"
               className="rounded-lg"
+              style={{objectFit:"fill"}}
             />
           </SwiperSlide>
         ))}
