@@ -7,10 +7,10 @@ import { Upload } from "@aws-sdk/lib-storage";
 
 const accessKeyId = process.env.S3_ACCESS_KEY_ID ?? "";
 const secretAccessKey = process.env.S3_SECRET_KEY ?? "";
-const Bucket = process.env.AWS_S3_BUCKET_NAME ?? "";
+const Bucket = process.env.S3_BUCKET_NAME ?? "";
 
 const s3Client = new S3Client({
-  region: process.env.AWS_S3_REGION,
+  region: process.env.S3_REGION,
   credentials: {
     accessKeyId,
     secretAccessKey,
