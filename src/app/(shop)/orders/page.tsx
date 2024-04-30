@@ -1,14 +1,21 @@
 export const dynamic = "force-dynamic";
 
 import Link from "next/link";
-import { Title } from "@/components";
+import { Pagination, Title } from "@/components";
 import { IoCardOutline } from "react-icons/io5";
-import { getUserOrders } from "@/actions";
+import { getPaginatedOrders } from "@/actions";
 import { redirect } from "next/navigation";
 import clsx from "clsx";
 
-export default async function OrdersPage() {
-  const {ok, orders = []} = await getUserOrders();
+interface Props {
+  searchParams : {
+    page : number
+  }
+}
+
+export default async function OrdersPage( { searchParams } : Props) {
+  const page = searchParams.page ? +searchParams.page : 1;
+  const {ok, totalPages = 1, orders = []} = await getPaginatedOrders({page});
   if(!ok) redirect("/");
   return (
     <>
@@ -80,6 +87,7 @@ export default async function OrdersPage() {
             ))}
           </tbody>
         </table>
+        <Pagination totalPages={totalPages}/>
       </div>
     </>
   );
