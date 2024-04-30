@@ -10,6 +10,8 @@
     "seed": "ts-node src/seed/seed-Database.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.565.0",
+    "@aws-sdk/lib-storage": "^3.565.0",
     "@paypal/paypal-js": "^8.0.5",
     "@paypal/react-paypal-js": "^8.2.0",
     "@prisma/client": "5.13.0",
