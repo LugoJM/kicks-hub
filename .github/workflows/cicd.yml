@@ -16,7 +16,7 @@ jobs:
       - name : Build Docker Image
         run : docker build -t lugojm09/kicks-hub .
       - name: Log into Docker Hub
-        run : docker login -U ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+        run : docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name : Publish Image to Docker Hub
         run : docker push lugojm09/kicks-hub:latest
 
