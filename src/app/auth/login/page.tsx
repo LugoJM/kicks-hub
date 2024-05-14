@@ -7,6 +7,11 @@ interface Props {
   }
 }
 
+export const metadata = {
+ title: 'Sign In',
+ description: 'Sign In Page',
+};
+
 export default function LoginPage({ searchParams } : Props) {
   const { callbackUrl } = searchParams;
   return (
