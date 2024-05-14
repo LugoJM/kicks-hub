@@ -3,6 +3,11 @@ import { Title } from "@/components";
 import { ProductsInCheckout } from "./ui/ProductsInCheckout";
 import { PlaceOrder } from "./ui/PlaceOrder";
 
+export const metadata = {
+ title: 'Checkout',
+ description: 'Checkout Page',
+};
+
 export default function CheckOutPage() {
   return (
     <div className="flex justify-center items-center mb-72 px-10 sm:px-0">

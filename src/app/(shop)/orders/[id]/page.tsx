@@ -15,6 +15,12 @@ interface Props {
   };
 }
 
+
+export const metadata = {
+ title: 'Order',
+ description: 'Order Page',
+};
+
 export default async function OrderPage({ params }: Props) {
   const { id } = params;
 

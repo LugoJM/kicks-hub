@@ -3,6 +3,10 @@ import { Title } from "@/components";
 import { ProductsInCart } from "./ui/ProductsInCart";
 import { OrderSummaryDetails } from "./ui/OrderSummaryDetails";
 
+export const metadata = {
+ title: 'Cart',
+ description: 'Cart Page',
+};
 
 export default function CartPage() {  
   return (
