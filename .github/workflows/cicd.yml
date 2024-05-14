@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v4
       - name: Create .env file
-        run: echo "DATABASE_URL=${{secrets.DATABASE_URL}}" >> .env && echo "AUTH_SECRET=${{secrets.AUTH_SECRET}}" >> .env && echo "NEXT_PUBLIC_PAYPAL_CLIENT_ID=${{secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}" >> .env && echo "PAYPAL_SECRET=${{secrets.PAYPAL_SECRET}}" >> .env && echo "PAYPAL_OAUTH_URL=${{secrets.PAYPAL_OAUTH_URL}}" >> .env && echo "PAYPAL_ORDERS_URL=${{secrets.PAYPAL_ORDERS_URL}}" >> .env && echo "S3_ACCESS_KEY_ID=${{secrets.S3_ACCESS_KEY_ID}}" >> .env && echo "S3_SECRET_KEY=${{secrets.S3_SECRET_KEY}}" >> .env && echo "S3_REGION=${{secrets.S3_REGION}}" >> .env && echo "S3_BUCKET_NAME=${{secrets.S3_BUCKET_NAME}}" >> .env 
+        run: echo "DATABASE_URL=${{secrets.DATABASE_URL}}" >> .env && echo "AUTH_SECRET=${{secrets.AUTH_SECRET}}" >> .env && echo "NEXT_PUBLIC_PAYPAL_CLIENT_ID=${{secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}" >> .env && echo "PAYPAL_SECRET=${{secrets.PAYPAL_SECRET}}" >> .env && echo "PAYPAL_OAUTH_URL=${{secrets.PAYPAL_OAUTH_URL}}" >> .env && echo "PAYPAL_ORDERS_URL=${{secrets.PAYPAL_ORDERS_URL}}" >> .env && echo "S3_ACCESS_KEY_ID=${{secrets.S3_ACCESS_KEY_ID}}" >> .env && echo "S3_SECRET_KEY=${{secrets.S3_SECRET_KEY}}" >> .env && echo "S3_REGION=${{secrets.S3_REGION}}" >> .env && echo "S3_BUCKET_NAME=${{secrets.S3_BUCKET_NAME}}" >> .env && echo "AUTH_TRUST_HOST=${{secrets.AUTH_TRUST_HOST}}" >> .env 
       - name : Build Docker Image
         run : docker build -t lugojm09/kicks-hub .
       - name: Log into Docker Hub
