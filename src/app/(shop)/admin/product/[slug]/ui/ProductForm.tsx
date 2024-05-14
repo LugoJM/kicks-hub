@@ -191,7 +191,7 @@ export const ProductForm = ({ product, categories }: Props) => {
             {
               product.ProductImage?.map(image => (
                 <div key={image.id}>
-                  <ProductImageComponent src={image?.url} width={300} height={300} alt={product.title ?? ""} className="rounded-t shadow-md w-full h-52 object-fill" />
+                  <ProductImageComponent src={image?.url} width={300} height={300} alt={product.title ?? ""} className="rounded-t shadow-md w-full h-52 object-cover" />
                   <button 
                     onClick={async () => await deleteProductImage(image.id, image.url)}
                     type="button" 

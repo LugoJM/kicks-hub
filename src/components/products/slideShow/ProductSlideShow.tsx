@@ -51,7 +51,6 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
               src={image}
               alt={title}
               className="rounded-lg w-full"
-              style={{objectFit:"fill"}}
             />
           </SwiperSlide>
         ))}
@@ -74,7 +73,6 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
               src={image}
               alt={title}
               className="rounded-lg"
-              style={{objectFit:"fill"}}
             />
           </SwiperSlide>
         ))}

@@ -77,7 +77,7 @@ export default async function AdminProductsPage({ searchParams }: Props) {
                   <Link href={`/product/${product.slug}`}>
                     <ProductImage
                       src={product.ProductImage[0]?.url}
-                      className="w-20 h-20 object-fit rounded"
+                      className="w-20 h-20 object-cover rounded"
                       alt={product.title}
                       width={80}
                       height={80}
