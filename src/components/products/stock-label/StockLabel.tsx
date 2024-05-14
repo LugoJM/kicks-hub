@@ -2,6 +2,7 @@
 
 import { getStockBySlug } from "@/actions";
 import { titleFont } from "@/config/fonts";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -10,13 +11,13 @@ interface Props {
 }
 
 export const StockLabel = ({ slug, className }: Props) => {
-  const [stock, setStock] = useState<number>();
+  const [stock, setStock] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getStock = async () => {
       const productStock = await getStockBySlug(slug);
-      setStock(productStock);
+      setStock(productStock!);
       setIsLoading(false);
     };  
     getStock();
@@ -29,7 +30,11 @@ export const StockLabel = ({ slug, className }: Props) => {
           &nbsp;
         </h1>
       ) : (
-        <h1 className={`${titleFont.className} ${className} antialiased`}>
+        <h1 className={clsx(
+          `${titleFont.className} ${className} antialiased`,{
+            "text-red-600 underline" : stock === 0
+          }
+        )}>
           Available Stock: {stock}
         </h1>
       )}
