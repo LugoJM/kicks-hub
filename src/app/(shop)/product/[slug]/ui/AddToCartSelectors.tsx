@@ -4,6 +4,8 @@ import { useState } from "react";
 import { QuantitySelector, SizeSelector } from "@/components";
 import type { CartProduct, Product } from "@/interfaces";
 import { useCartStore } from "@/store";
+import clsx from "clsx";
+import { toast } from "sonner";
 
 interface Props {
   product: Product;
@@ -12,16 +14,18 @@ interface Props {
 export const AddToCartSelectors = ({ product }: Props) => {
   const { sizes } = product;
 
-  const addProductToCart = useCartStore(state => state.addProductToCart);
+  const addProductToCart = useCartStore((state) => state.addProductToCart);
 
   const [posted, setPosted] = useState(false);
   const [size, setSize] = useState<string | undefined>();
   const [quantity, setQuantity] = useState<number>(1);
 
+  const isAvailable = product.inStock > 0;
+
   const addToCart = () => {
     setPosted(true);
 
-    if(!size) return;
+    if (!size) return;
 
     const cartProduct: CartProduct = {
       id: product.id,
@@ -37,11 +41,12 @@ export const AddToCartSelectors = ({ product }: Props) => {
     setPosted(false);
     setQuantity(1);
     setSize(undefined);
+    toast.success("Product Added to Cart Successfully.");
   };
 
   return (
     <>
-      {posted && !size &&  (
+      {posted && !size && (
         <span className="mt-2 text-red-500 fade-in">You must pick a size*</span>
       )}
       <SizeSelector
@@ -51,7 +56,14 @@ export const AddToCartSelectors = ({ product }: Props) => {
       />
       <QuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
 
-      <button onClick={addToCart} className="btn-primary py-2 my-5">
+      <button
+        disabled={!isAvailable}
+        onClick={addToCart}
+        className={clsx("py-2 my-5", {
+          "btn-primary": isAvailable,
+          "btn-disabled": !isAvailable,
+        })}
+      >
         Add to cart
       </button>
     </>
