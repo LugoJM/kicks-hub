@@ -27,8 +27,8 @@ export const TopBar = () => {
       </div>
 
       <div className="hidden sm:block">
-        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/men">Mens</Link>
-        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/women">Womens</Link>
+        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/men">Men</Link>
+        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/women">Women</Link>
         <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/kid">Kids</Link>
       </div>
 
