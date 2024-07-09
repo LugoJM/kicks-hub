@@ -1,6 +1,6 @@
 "use server";
 
-import { uploadtoS3 } from "@/lib";
+import { uploadImages } from "@/lib";
 import prisma from "@/lib/prisma";
 import { Gender, Product } from "@prisma/client";
 import { revalidatePath } from "next/cache";
@@ -96,24 +96,6 @@ export const updateProduct = async (formData: FormData) => {
       ok: false,
       message: "Error while updating/creating product",
     };
-  }
-};
-
-const uploadImages = async (images: File[]) => {
-  try {
-    const uploadPromises = images.map(async (image) => {
-      try {
-        return uploadtoS3(image);
-      } catch (error) {
-        return null;
-      }
-    });
-
-    const uploadedImages = await Promise.all(uploadPromises);
-
-    return uploadedImages;
-  } catch (error) {
-    return null;
   }
 };
 

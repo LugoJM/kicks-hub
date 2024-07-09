@@ -1,6 +1,6 @@
 "use server";
 
-import { deleteFileFromS3 } from "@/lib";
+import { deleteImage as deleteImageFromCloud } from "@/lib";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -12,14 +12,10 @@ export const deleteProductImage = async (imageId: number, imageURL: string) => {
     };
   }
 
-  const parsedUrl = new URL(imageURL);
-
-  const path = parsedUrl.pathname;
-
-  const fileKey = path.substring(1);
+  const imageName = imageURL.split("/").pop()?.split(".")[0] ?? "";
 
   try {
-    await deleteFileFromS3(fileKey);
+    await deleteImageFromCloud(imageName);
 
     const deleteImage = await prisma.productImage.delete({
       where: {

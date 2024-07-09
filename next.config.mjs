@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns : [
             {
                 protocol : "https",
-                hostname : "kicks-hub.s3.us-east-2.amazonaws.com"
+                hostname : "res.cloudinary.com"
             }
         ]
     }
