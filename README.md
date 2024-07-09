@@ -54,10 +54,12 @@ Some of the frameworks/libraries used to build this project:
 This project is currently deploy to 2 service clouds:
 1. On [Vercel](https://kicks-hub.vercel.app/)
     - All of the CI/CD pipelines are managed by Vercel's workflow.
-2. On [AWS](http://ec2-18-118-133-62.us-east-2.compute.amazonaws.com:3000/)
-    - The website is deployed usign a **EC2** instance.
+
+2. On [AWS](http://ec2-18-118-133-62.us-east-2.compute.amazonaws.com:3000/) ~ *__Update:__ Not anymore due to end of free trial account*
+    - The website is deployed using a **EC2** instance.
       - Docker is installed to manage the applicacion versions and deployment.
       - A **self-hosted-runner** service is running on the instance, configured to trigger application deployment once the build has finished.
+*
         > You can check the pipelines in `cicd.yml`
 
 Both of these deployments are using an **S3 Bucket** to store an retrieve the images displayed on the website.
